@@ -1,0 +1,100 @@
+package bar;
+
+import java.util.ArrayList;
+
+public class Conta {
+	private int codigo, mesa, qtdPessoas;
+	private String atendente;
+	private ArrayList<Item> items;
+	private double gorjeta;
+	private double total = 0.0, valorFinal;
+	public Conta(int codigo, int mesa, String atendente, Item[] items, double gorjeta, int qtdPessoas, double total) {
+		this.codigo = codigo;
+		this.mesa = mesa;
+		this.atendente = atendente;
+		this.qtdPessoas = qtdPessoas;
+	}
+	
+	public void fechaConta() {
+		for(Item i : items) {
+		}
+	}
+	
+	public void adicionaItem(int qtd, Item item) {
+		for (int x = 1; x <= qtd; x++) {
+			this.items.add(produto);
+		}
+	}
+	
+	public double getTotalMesa() {
+		return total;
+	}
+	
+	public void imprimeItens() {
+		for(Item i : items) {
+			System.out.println(i.exportaTexto());
+		}
+		calculaTotalMesa();
+		System.out.println("Total: " + total);
+	}
+	
+	public void calculaTotalMesa() {
+		total = 0;
+		for(Item i : items){
+			total += i.getValor();
+		}
+	}
+	public static void main(String[] args) {
+		Item cocaCola = new Item("Coca-Cola", 20, 5.5);
+		Conta mesa24 = new Conta(1, 24, 6, "José");
+		
+		mesa24.adicionaItem(3, cocaCola);
+	}
+	
+	
+	
+}
+====
+package bar;
+
+public class Item {
+	private String descricao;
+	private int qtdEstoque;
+	private double valor;
+	public Item(String descricao, int qtdEstoque, double valor) {
+		super();
+		this.descricao = descricao;
+		this.qtdEstoque = qtdEstoque;
+		this.valor = valor;
+	}
+	public String getDescricao() {
+		return descricao;
+	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+	public int getQtdEstoque() {
+		return qtdEstoque;
+	}
+	public void adicionaQtdEstoque(int qtdAdicionada) {
+		this.qtdEstoque += qtdAdicionada;
+	}
+
+	public void removeQtdEstoque(int qtdRemovida) {
+		this.qtdEstoque -= qtdRemovida;
+	}
+	
+	public double getValor() {
+		return valor;
+	}
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
+	
+	public String exportaTexto() {
+		return this.descricao + "\t" + this.valor;
+	}
+	
+	
+}
+===
